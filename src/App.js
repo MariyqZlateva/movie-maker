@@ -1,16 +1,19 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
+import Movies from "./containers/Movies";
+import AddMovie from "./components/AddMovie";
 
-class App extends Component {
-  render() {
+const App = () => {
+
     return (
         <div>
             <Header/>
+            <Movies/>
+            <AddMovie/>
             <Footer/>
         </div>
     );
-  }
 }
 
 export default App;
