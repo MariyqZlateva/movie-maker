@@ -2,8 +2,9 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const {graphqlHTTP} = require('express-graphql');
-const movieSchema = require('./schema/schema')
+const movieSchema = require('./schema/schema');
 const resolvers = require('./resolver/resolver');
+const cors = require('cors');
 
 mongoose.connect('mongodb+srv://admin:Sweetgirl@cluster0.ehesn.mongodb.net/moviemaker?retryWrites=true&w=majority', {
     useNewUrlParser: true,
@@ -13,7 +14,7 @@ mongoose.connect('mongodb+srv://admin:Sweetgirl@cluster0.ehesn.mongodb.net/movie
     .then(()=> console.log('MongoDB Connected!'))
     .catch((err)=> console.log('Error!', err))
 
-
+app.use(cors({origin: true}));
 
 //Setting GraphQL
 app.use('/graphql', graphqlHTTP({

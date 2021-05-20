@@ -1,24 +1,22 @@
-//const Movie = require('../model/model');
-
-const movies = [
-    {id: 1, name: 'John Wick Parabellum', genre: 'Action', year: 2019, image: "https://rb.gy/bhl1su"},
-    {id: 2, name: 'John Wick Parabellum', genre: 'Action', year: 2019, image: "https://rb.gy/bhl1su"},
-    {id: 3, name: 'John Wick Parabellum', genre: 'Action', year: 2019, image: "https://rb.gy/bhl1su"},
-    {id: 4, name: 'John Wick Parabellum', genre: 'Action', year: 2019, image: "https://rb.gy/bhl1su"},
-    {id: 5, name: 'John Wick Parabellum', genre: 'Action', year: 2019, image: "https://rb.gy/bhl1su"},
-    {id: 6, name: 'John Wick Parabellum', genre: 'Action', year: 2019, image: "https://rb.gy/bhl1su"},
-    {id: 7, name: 'John Wick Parabellum', genre: 'Action', year: 2019, image: "https://rb.gy/bhl1su"}
-]
-
+const Movie = require('../model/model');
 
 const resolvers = {
     movies: () => {
-        return movies
+        //for finding all movies
+        //currently null
+        return Movie.find({})
+    },
+    movieByName: (args) => {
+        return Movie.findOne({name: args.name})
     },
     addMovie: (args) => {
-         return {
-            name: args.name
-         }
+        let movie = new Movie({
+            name: args.name,
+            genre: args.genre,
+            year: args.year
+        })
+        movie.save()
+        return movie
     }
 }
 
