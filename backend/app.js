@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
@@ -5,7 +6,6 @@ const {graphqlHTTP} = require('express-graphql');
 const movieSchema = require('./schema/schema');
 const resolvers = require('./resolver/resolver');
 const cors = require('cors');
-require("dotenv").config();
 const DATABASE_URL = process.env.DATABASE_URL;
 
 mongoose.connect(DATABASE_URL, {
